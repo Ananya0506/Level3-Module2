@@ -38,7 +38,7 @@ import processing.core.PApplet;
  */
 public class _03_VisualArraySorter extends PApplet {
     static final int WIDTH = 600;
-    static final int HEIGHT = 400;
+    static final int HEIGHT = 500;
     int[] arr; 
     @Override
     public void settings() {
@@ -48,17 +48,39 @@ public class _03_VisualArraySorter extends PApplet {
     @Override
     public void setup() {
       arr = new int[50];  
-      for(int i =0; i<arr.length; i++) {
-    	  arr[i] = (int)random(height);
-    	  //CALL NO STROKE METHOD HERE AFTER YOU ARE DONE WITH CREATING THE SHAPES
+     
+    	  noStroke();
       }
-    }
+    
 
     @Override
     public void draw() {
+        background(0,0,0);
         
+        
+        fill(255, 255, 255);
+        for(int i = 0; i<arr.length; i++) {
+        	rect(i*(WIDTH/arr.length), HEIGHT, WIDTH/arr.length, -arr[i]);
+        	stepSort(arr);
+        
+        
+        }
+        
+       if (mousePressed) {
+    	   extraction(arr);
+       }
+    
     }
 
+   void extraction(int[] arr) {
+	   for(int i =0; i<arr.length; i++) {
+	    	  arr[i] = (int)random(HEIGHT);
+   }
+	   
+	   
+	   
+   }
+    
     static public void main(String[] passedArgs) {
         PApplet.main(_03_VisualArraySorter.class.getName());
     }
@@ -66,7 +88,7 @@ public class _03_VisualArraySorter extends PApplet {
     /*********************** DO NOT MODIFY THE CODE BELOW ********************/
     
     int startIndex = 1;
-
+   
     void stepSort(int[] arr) {
       for (int i = startIndex; i < arr.length; i++) {
         if (arr[i - 1] > arr[i]) {

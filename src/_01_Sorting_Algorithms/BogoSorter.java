@@ -19,16 +19,61 @@ public class BogoSorter extends Sorter {
      * STEP 3. Go back to step 1.
      */
     @Override
-    void sort(int[] array, SortingVisualizer display) {
-    	  for (int i = 0; i < array.length; i++){
-          	
-          	for(int j = 0; j < array.length-1; j++) {
-          		
-          	if (array[j+1] > array[j]) {
-          		break;
-          		
-          	}
-          	}
-}
-}
+    
+	void sort(int[] array, SortingVisualizer display) {
+		int score = 0;
+		boolean sorted = false;
+		while (!sorted) {
+			score = 0;
+			Random ran = new Random();
+			Random ranny = new Random();
+			int s = ran.nextInt(array.length);
+			int r = ranny.nextInt(array.length);
+
+			int t = array[r];
+			array[r] = array[s];
+			array[s] = t;
+			
+			display.updateDisplay();
+
+			for (int i = 0; i < array.length-1; i++) {
+					
+
+					if (array[i + 1] > array[i]) {
+						score++;
+					}
+
+					
+
+			}
+			if (score == array.length + 1) {
+				sorted = true;
+			}
+		}
+	}
+
+//    	for (int i = 0; i < array.length; i++){
+//          	
+//          	for(int j = 0; j < array.length-1; j++) {
+//          		
+//	          	if (array[j+1] > array[j]) {
+//	          		break;
+//	          		
+//	          	}
+//	          	
+//          		Random ran = new Random();
+//          		Random ranny = new Random();
+//          		int s = ran.nextInt(i+1);
+//          		int r = ranny.nextInt(i+1);
+//          		
+//          		int t = array[r];
+//          		array[r] = array[s];
+//          		array[s] = t;
+//          		
+//          		display.updateDisplay();
+//          	}
+//
+//    	
+//    	}
+//}
 }
